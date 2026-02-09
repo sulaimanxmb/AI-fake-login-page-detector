@@ -14,8 +14,7 @@ COPY requirements.txt .
 
 # Install Python dependencies
 # We add flask explicitly here just in case it's not in requirements.txt yet
-RUN pip install --no-cache-dir -r requirements.txt && \
-    pip install flask
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the current directory contents into the container at /app
 COPY . .

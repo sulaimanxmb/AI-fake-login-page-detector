@@ -1,20 +1,21 @@
-url,label
-https://revivafund.com/,1
-https://github.com/login,0
-https://accounts.google.com/signin,0
-https://login.microsoftonline.com,0
-https://www.facebook.com/login,0
-https://www.linkedin.com/login,0
-https://login.yahoo.com,0
-https://accounts.spotify.com/en/login,0
-https://signin.aws.amazon.com/signin,0
-https://auth0.com/login,0
-https://bitbucket.org/account/signin/,0
-https://stackoverflow.com/users/login,0
-https://login.salesforce.com,0
-https://secure.paypal.com/signin,0
-https://account.adobe.com/sign-in,0
-https://www.dropbox.com/login,0
+url                                                                                                                       , label
+https://revivafund.com/                                                                                                   ,     1
+
+https://github.com/login                                                                                                  ,     0
+https://accounts.google.com/signin                                                                                        ,     0
+https://login.microsoftonline.com                                                                                         ,     0
+https://www.facebook.com/login                                                                                            ,     0
+https://www.linkedin.com/login                                                                                            ,     0
+https://login.yahoo.com                                                                                                   ,     0
+https://accounts.spotify.com/en/login                                                                                     ,     0
+https://signin.aws.amazon.com/signin                                                                                      ,     0
+https://auth0.com/login                                                                                                   ,     0
+https://bitbucket.org/account/signin/                                                                                     ,     0
+https://stackoverflow.com/users/login                                                                                     ,     0
+https://login.salesforce.com                                                                                              ,     0
+https://secure.paypal.com/signin                                                                                          ,     0
+https://account.adobe.com/sign-in                                                                                         ,     0
+https://www.dropbox.com/login                                                                                             ,     0
 
 # Remember to shuffle the data before training the model to ensure that the model does not learn any order-based patterns.
 # Also remember to get Fake URL's from PhishTank process written in notes

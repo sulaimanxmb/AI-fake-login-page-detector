@@ -74,25 +74,29 @@ If you don't want to install Python manually do this with docker:
 
 
 ## Workflow 
+
 **When you run train.py it generates the proper dataset for training :** 
 
-Step 1: It reads phishing_urls.csv containing safe and phishing URLs  \
-        | \
-            v \
-Step 2: For every URL it calls the extract_url_feature.py which calculates multiple metrics of the URL stored in first half of features.csv \
-        | \
-        v \
-Step 3: using the fetch_html.py script it first verifies if link is reachable or not and if it is then it runs extract_html_features.py  \
-        | \
-        v \
-Step 4: This script parses the full HTML code and looks for red flags and stores all the data to features.csv \
-     | \
-     v \
-Step 5: and after features.csv is generated the train_model.py is executed which uses Random Forest Classifier with 80/20 data split training and the saved_models.pkl is generated 
+```mermaid
+flowchart TD
+    T1["Step 1: It reads phishing_urls.csv containing safe and phishing URLs"]
+    T2["Step 2: For every URL it calls the extract_url_feature.py which calculates multiple metrics of the URL stored in first half of features.csv"]
+    T3["Step 3: using the fetch_html.py script it first verifies if link is reachable or not and if it is then it runs extract_html_features.py"]
+    T4["Step 4: This script parses the full HTML code and looks for red flags and stores all the data to features.csv"]
+    T5["Step 5: and after features.csv is generated the train_model.py is executed which uses Random Forest Classifier with 80/20 data split training and the saved_models.pkl is generated"]
+
+    T1 --> T2
+    T2 --> T3
+    T3 --> T4
+    T4 --> T5
+```
 
 **when you run detect.py (URL) :**
 
-Step 1: The script loads saved_models.pkl into the memory \
-        | \
-        v \
-Step 2: The same procedure is done but for only this (URL) and it predicts 1 or 0 with model.predict() and % with model.predict_proba()
+```mermaid
+flowchart TD
+    D1["Step 1: The script loads saved_models.pkl into the memory"]
+    D2["Step 2: The same procedure is done but for only this (URL) and it predicts 1 or 0 with model.predict() and % with model.predict_proba()"]
+
+    D1 --> D2
+```
