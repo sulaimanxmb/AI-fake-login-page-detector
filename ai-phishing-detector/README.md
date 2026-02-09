@@ -1,10 +1,8 @@
 # AI Phishing Detector
 
-An AI-powered tool to detect phishing websites by analyzing URL structure and HTML source code features. This project uses a Random Forest classifier to distinguish between safe and malicious sites.
+This is a AI-powered phishing site detection tool using the Random Forest Classifier model, It not only scans the Suspicious URL but also scans the source code of the URL for any Suspicious forms and gives the result, made as a project for my course "AI essentials in Cybersecurity" in 4th semester
 
 ## 🚀 Quick Start (Re-creating from Scratch)
-
-If you are setting this up on a new machine after a few months, follow these exact steps.
 
 ### Prerequisites
 *   **Python 3.11+** installed.
@@ -19,7 +17,7 @@ cd ai-phishing-detector
 Create a virtual environment:
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+source .venv/bin/activate  
 ```
 
 Install dependencies:
@@ -35,7 +33,14 @@ python3 train.py
 ```
 *Output should show "Model saved to model/saved_models.pkl".*
 
-### 3. Running the Web Interface
+### 3. Running CLI Detection
+To check a specific URL from the command line:
+
+```bash
+python3 detect.py "http://google.com"
+```
+
+### 4. Running the Web Interface (Optional)
 Start the local web server to use the graphical detector:
 
 ```bash
@@ -43,36 +48,12 @@ python3 web_interface/app.py
 ```
 *Access the tool at: http://localhost:8081*
 
-### 4. Running CLI Detection
-To check a specific URL from the command line:
-
-```bash
-python3 detect.py "http://google.com"
-```
-
----
-
-## 🧪 Testing with Simulations
-
-To verify the detector works, you can run the included simulation environments.
-
-### Fake Google Login (Phishing)
-1.  Open a new terminal.
-2.  `cd ../fake-google-login`
-3.  `python3 server.py` (Runs on Port 8080)
-4.  Test URL: `http://localhost:8080` -> **Should be RED (Phishing)**
-
-### Real Google Login (Safe Simulation)
-1.  Open a new terminal.
-2.  `cd ../real-google-login`
-3.  `python3 server.py` (Runs on Port 8081)
-4.  Test URL: `http://localhost:8081` -> **Should be GREEN (Safe)** (Ensure port 8081 is free first!)
 
 ---
 
 ## 🐳 Docker Usage (Easiest Method)
 
-If you don't want to install Python manually:
+If you don't want to install Python manually do this with docker:
 
 1.  **Build:**
     ```bash
@@ -90,3 +71,28 @@ If you don't want to install Python manually:
 *   `features/`: Logic for extracting URL and HTML features.
 *   `model/`: Training scripts and saved models.
 *   `web_interface/`: Flask web application.
+
+
+## Workflow 
+**When you run train.py it generates the proper dataset for training :** 
+
+Step 1: It reads phishing_urls.csv containing safe and phishing URLs  \
+        | \
+            v \
+Step 2: For every URL it calls the extract_url_feature.py which calculates multiple metrics of the URL stored in first half of features.csv \
+        | \
+        v \
+Step 3: using the fetch_html.py script it first verifies if link is reachable or not and if it is then it runs extract_html_features.py  \
+        | \
+        v \
+Step 4: This script parses the full HTML code and looks for red flags and stores all the data to features.csv \
+     | \
+     v \
+Step 5: and after features.csv is generated the train_model.py is executed which uses Random Forest Classifier with 80/20 data split training and the saved_models.pkl is generated 
+
+**when you run detect.py (URL) :**
+
+Step 1: The script loads saved_models.pkl into the memory \
+        | \
+        v \
+Step 2: The same procedure is done but for only this (URL) and it predicts 1 or 0 with model.predict() and % with model.predict_proba()
