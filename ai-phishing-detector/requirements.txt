@@ -1,0 +1,9 @@
+pandas
+scikit-learn
+joblib
+requests
+beautifulsoup4
+tldextract
+flask
+numpy
+scipy

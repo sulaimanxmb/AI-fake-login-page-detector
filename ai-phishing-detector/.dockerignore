@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.git/
+.DS_Store
+*.pyc
+fake-google-login/
+real-google-login/

