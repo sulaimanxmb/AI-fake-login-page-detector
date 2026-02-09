@@ -62,7 +62,7 @@ If you don't want to install Python manually do this with docker:
 
 2.  **Run:**
     ```bash
-    docker run -p 8081:8081 phishing-detector
+    docker run --name phishing-detector -p 8081:8081 phishing-detector
     ```
     *This automatically handles training and starts the website.*
 
