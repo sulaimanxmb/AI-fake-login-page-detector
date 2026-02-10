@@ -40,6 +40,7 @@ def detect(url: str):
 
     print(f"[*] Analyzing URL: {url}")
     features = extract_all_features(url)
+    print(f"[DEBUG] Extracted Features: {features}")
     
     # Convert to DataFrame to match training format
     # We must ensure columns are in the same order as training. 

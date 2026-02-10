@@ -72,7 +72,7 @@ def index():
     return render_template("index.html")
 
 if __name__ == "__main__":
-    print("[*] Starting Web Interface on http://localhost:8081")
+    print("[*] Starting Web Interface on http://localhost:4444")
     # Setting use_reloader=False helps prevent double-binding of the port 
     # which is often the cause of "address already in use" on macOS.
-    app.run(debug=True, port=8081, host="0.0.0.0", use_reloader=False)
+    app.run(debug=True, port=4444, host="0.0.0.0", use_reloader=False)
