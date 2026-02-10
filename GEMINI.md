@@ -34,7 +34,7 @@ The model analyzes several "red flags":
 
 ### Local Execution
 1. **Train:** `cd ai-phishing-detector && .venv/bin/python3 train.py`
-2. **Web App:** `.venv/bin/python3 web_interface/app.py` (Runs on Port 8081)
+2. **Web App:** `.venv/bin/python3 web_interface/app.py` (Runs on Port 4444)
 3. **CLI Detect:** `.venv/bin/python3 detect.py <URL>`
 
 ### Phishing Simulation
@@ -43,7 +43,7 @@ The model analyzes several "red flags":
 
 ### Docker
 1. **Build:** `docker build -t phishing-detector ./ai-phishing-detector`
-2. **Run:** `docker run -p 8081:8081 phishing-detector`
+2. **Run:** `docker run -p 4444:4444 phishing-detector`
 
 ## Development Status
 The project is fully functional with automated training on startup, visual/source-code based detection, and a professional web UI.

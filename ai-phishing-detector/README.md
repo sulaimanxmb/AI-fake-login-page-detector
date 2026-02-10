@@ -46,7 +46,7 @@ Start the local web server to use the graphical detector:
 ```bash
 python3 web_interface/app.py
 ```
-*Access the tool at: http://localhost:8081*
+*Access the tool at: http://localhost:4444*
 
 
 ---
@@ -55,16 +55,16 @@ python3 web_interface/app.py
 
 If you don't want to install Python manually do this with docker:
 
-1.  **Build:**
-    ```bash
-    docker build -t phishing-detector .
-    ```
+1. **Build the Image** (Run from the project root):
+   ```bash
+   docker build -t phishing-detector -f ai-phishing-detector/Dockerfile .
+   ```
 
-2.  **Run:**
-    ```bash
-    docker run --name phishing-detector -p 8081:8081 phishing-detector
-    ```
-    *This automatically handles training and starts the website.*
+2. **Run the Container**:
+   ```bash
+   docker run --name phishing-detector -p 4444:4444 -p 8080-8084:8080-8084 phishing-detector
+   ```
+    *This automatically handles training and starts the website on your localhost 4444.*
 
 ## 🛠 Project Structure
 *   `data/`: CSV datasets for training.

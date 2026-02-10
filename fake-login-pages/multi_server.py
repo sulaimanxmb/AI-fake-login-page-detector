@@ -9,7 +9,8 @@ SITES = {
     8080: ("Amazon", "https://www.amazon.com/ap/signin"),
     8081: ("Apple", "https://appleid.apple.com/sign-in"),
     8082: ("Microsoft", "https://login.microsoftonline.com"),
-    8083: ("Google", "https://accounts.google.com/signin")
+    8083: ("Google", "https://accounts.google.com/signin"),
+    8084: ("Login", "https://www.facebook.com/login")
 }
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))

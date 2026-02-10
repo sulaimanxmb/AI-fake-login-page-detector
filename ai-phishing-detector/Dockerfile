@@ -10,20 +10,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy the requirements file into the container
-COPY requirements.txt .
+COPY ai-phishing-detector/requirements.txt .
 
 # Install Python dependencies
 # We add flask explicitly here just in case it's not in requirements.txt yet
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the current directory contents into the container at /app
+# Copy everything from the build context
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 8081
+# Expose the app port and the phishing simulation ports
+EXPOSE 4444 8080 8081 8082 8083 8084
 
 # Make the entrypoint script executable
-RUN chmod +x docker-entrypoint.sh
+RUN chmod +x ai-phishing-detector/docker-entrypoint.sh
 
 # Define the command to run the app
-ENTRYPOINT ["./docker-entrypoint.sh"]
+ENTRYPOINT ["./ai-phishing-detector/docker-entrypoint.sh"]

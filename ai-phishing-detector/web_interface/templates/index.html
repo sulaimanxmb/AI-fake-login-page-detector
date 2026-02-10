@@ -22,7 +22,7 @@
             border-radius: 1rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             width: 100%;
-            max-width: 500px;
+            max-width: 700px;
             text-align: center;
         }
         h1 {
@@ -106,6 +106,13 @@
         <div class="result-title">{{ result }}</div>
         <div class="score">Prediction Confidence: {{ confidence }}</div>
         <div class="score">Phishing Probability: {{ probability }}</div>
+    </div>
+
+    <div style="margin-top: 2rem; text-align: left; background-color: #000; padding: 1rem; border-radius: 0.5rem; font-family: monospace; font-size: 0.8rem; color: #10b981; overflow-x: auto; max-width: 100%; box-sizing: border-box;">
+        <div style="color: #9ca3af; margin-bottom: 0.5rem; font-weight: bold; border-bottom: 1px solid #374151; padding-bottom: 0.25rem;">DEBUG CONSOLE</div>
+        {% for log in logs %}
+        <div style="margin-bottom: 0.25rem;">{{ log }}</div>
+        {% endfor %}
     </div>
     {% endif %}
 </div>

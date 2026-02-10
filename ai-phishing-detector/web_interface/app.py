@@ -23,16 +23,22 @@ except FileNotFoundError:
     model = None
 
 def get_prediction(url):
+    logs = []
+    logs.append(f"[*] Analyzing URL: {url}")
+    
     if not model:
-        return "ERROR", 0, 0
+        logs.append("[-] Model not found! Please run train.py first.")
+        return "ERROR", 0, 0, logs
 
     # 1. Feature Extraction (Copying logic from detect.py)
     features = extract_url_features(url)
-    html = fetch_html(url)
     
+    html = fetch_html(url)
     if html:
+        logs.append(f"[+] Successfully fetched HTML for {url}")
         features.update(extract_html_features(html, url))
     else:
+        logs.append(f"[-] Failed to fetch HTML for {url} (or not found). Using default safe values.")
         # Defaults
         features.update({
             "has_password_field": 0,
@@ -46,6 +52,8 @@ def get_prediction(url):
             "title_has_login": 0
         })
 
+    logs.append(f"[DEBUG] Extracted Features: {features}")
+
     # 2. Prediction
     feature_df = pd.DataFrame([features])
     
@@ -55,19 +63,20 @@ def get_prediction(url):
     result = "PHISHING" if prediction == 1 else "SAFE"
     confidence = phishing_prob if prediction == 1 else (1 - phishing_prob)
     
-    return result, confidence, phishing_prob
+    return result, confidence, phishing_prob, logs
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         url = request.form.get("url")
         if url:
-            result, conf, prob = get_prediction(url)
+            result, conf, prob, logs = get_prediction(url)
             return render_template("index.html", 
                                    url=url, 
                                    result=result, 
                                    confidence=f"{conf:.2%}", 
-                                   probability=f"{prob:.2%}")
+                                   probability=f"{prob:.2%}",
+                                   logs=logs)
     
     return render_template("index.html")
 
