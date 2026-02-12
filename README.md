@@ -19,6 +19,10 @@ Create a virtual environment:
 python3 -m venv .venv
 source .venv/bin/activate  
 ```
+Change to the directory:
+```bash
+cd ai-phishing-detector
+```
 
 Install dependencies:
 ```bash
