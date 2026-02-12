@@ -11,7 +11,7 @@ This is a AI-powered phishing site detection tool using the Random Forest Classi
 ### 1. Installation
 Clone the repository and navigate to the project folder:
 ```bash
-cd ai-phishing-detector
+cd AI-fake-login-page-detector
 ```
 
 Create a virtual environment:
