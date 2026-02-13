@@ -1,5 +1,13 @@
 # AI Phishing Detector
 
+![Python](https://img.shields.io/badge/Python-3.11+-blue)
+![Machine Learning](https://img.shields.io/badge/Model-Random%20Forest-green)
+![Framework](https://img.shields.io/badge/Framework-Flask-lightgrey)
+![Docker](https://img.shields.io/badge/Docker-Supported-2496ED)
+![Port](https://img.shields.io/badge/Web%20Interface-4444-orange)
+![License](https://img.shields.io/badge/License-Educational-yellow)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+
 This is a AI-powered phishing site detection tool using the Random Forest Classifier model, It not only scans the Suspicious URL but also scans the source code of the URL for any Suspicious forms and gives the result, made as a project for my course "AI essentials in Cybersecurity" in 4th semester
 
 ## 🚀 Quick Start (Re-creating from Scratch)
